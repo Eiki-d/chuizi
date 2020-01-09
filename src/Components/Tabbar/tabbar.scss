@@ -1,0 +1,25 @@
+.tabbar {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: .56rem;
+  .tabbar_list {
+    display: flex;
+    justify-content: space-around;
+    li {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      color: #666;
+      font-size: .14rem;
+      .iconfont {
+        margin: .0625rem .245rem .04rem;
+        font-size: .2rem;
+      }
+      .tabbar_title {
+        font-size: .13rem;
+      }
+    }
+  }
+}
