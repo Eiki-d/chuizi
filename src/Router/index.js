@@ -13,6 +13,7 @@ import Cart from '../Views/Cart/cart'
 import Center from '../Views/Center/center'
 import Detail from '../Views/Detail/detail'
 import Login from '../Views/Login/login'
+import Search from '../Views/Search/search'
 // import {Provider} from 'react-redux'
 // import Store from '../Redux/store'
 const router = (
@@ -27,6 +28,7 @@ const router = (
                 <Route path="/classify" component={Classify}/>
                 <Route path="/cart" component={Cart}/>
                 <Route path="/login" component={Login}/>
+                <Route path="/search" component={Search} exact/>
                 <Route path="/center" render={()=>
                     localStorage.getItem("token")?<Center/>:<Redirect to="/login"/>
                 }/> 
