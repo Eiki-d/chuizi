@@ -27,6 +27,13 @@
       "unicode_decimal": 58912
     },
     {
+      "icon_id": "1009742",
+      "name": "个人中心1",
+      "font_class": "gerenzhongxin1",
+      "unicode": "e6de",
+      "unicode_decimal": 59102
+    },
+    {
       "icon_id": "1059740",
       "name": "分期商城－待收货",
       "font_class": "daishouhuo",
@@ -62,11 +69,18 @@
       "unicode_decimal": 59438
     },
     {
+      "icon_id": "2674927",
+      "name": "箭头 上",
+      "font_class": "jiantoushang",
+      "unicode": "e62d",
+      "unicode_decimal": 58925
+    },
+    {
       "icon_id": "2674928",
       "name": "箭头 右",
       "font_class": "jiantouyou",
-      "unicode": "e62d",
-      "unicode_decimal": 58925
+      "unicode": "e62e",
+      "unicode_decimal": 58926
     },
     {
       "icon_id": "5269226",
@@ -81,6 +95,13 @@
       "font_class": "cartproductStyle",
       "unicode": "e506",
       "unicode_decimal": 58630
+    },
+    {
+      "icon_id": "6129199",
+      "name": "158个人中心、我的-线性",
+      "font_class": "gerenzhongxinwode-xianxing",
+      "unicode": "e7a0",
+      "unicode_decimal": 59296
     },
     {
       "icon_id": "6567630",
