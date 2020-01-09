@@ -27,7 +27,7 @@ class Tabbar extends Component{
                 </li>
                 <li>
                     <NavLink to="/center" activeClassName="active">
-                    <span className="iconfont icon-gerenzhongxinwode-xianxing
+                    <span className="iconfont icon-tabmeinactive
 "></span>
                     <span className="tabbar_title">个人中心</span>
                     </NavLink>

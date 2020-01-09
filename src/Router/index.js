@@ -29,9 +29,10 @@ const router = (
                 <Route path="/cart" component={Cart}/>
                 <Route path="/login" component={Login}/>
                 <Route path="/search" component={Search} exact/>
-                <Route path="/center" render={()=>
+                {/* <Route path="/center" render={()=>
                     localStorage.getItem("token")?<Center/>:<Redirect to="/login"/>
-                }/> 
+                }/>  */}
+                <Route path="/center" component={Center}/>
                 <Route path="/detail" component={Detail} exact/>
                 <Redirect from="/" to="/home" exact/>
                 <Redirect to="/error"/>
