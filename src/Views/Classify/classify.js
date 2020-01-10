@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import {
-    // NavLink,
+    NavLink,
     Switch,
     Route
 } from 'react-router-dom'
@@ -24,16 +24,19 @@ class Classify extends Component {
         })
     }
     render(){
-        return <div>
-            <Navbar/>
+        return <div className="Classify">
+            <div className="Navbar">
+                <Navbar/>
+            </div>
+            
 
             <div className="category-container">
                 <section className="left-wrap">
                     <ul className="first-list">
                         {
                             this.state.datalist.map((item,index)=>  
-                            <li key={index} onClick={()=>this.handleClick(item.classifyId)}>{item.classifyName}</li>
-                            // <NavLink to="/classify/digitail"></NavLink>
+                            // <li key={index} onClick={()=>this.handleClick(item.classifyId)}>{item.classifyName}</li>
+                            <NavLink to="/classify/digitail" key={index} onClick={()=>this.handleClick(item.classifyId)} activeClassName="active">{item.classifyName}</NavLink>
                             )
                         }
                     </ul>
@@ -48,13 +51,6 @@ class Classify extends Component {
     handleClick = (id)=>{
         console.log(id)
         localStorage.setItem('myid',id)
-        for(var i=0; i<this.state.datalist.length; i++){
-            if(this.state.datalist[i].classifyId===id){
-                this.props.history.push('/classify/digitail')
-            }
-
-        }
-
     }
 
 
