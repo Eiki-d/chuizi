@@ -7,4 +7,48 @@
       font-size: .22rem;
     }
   }
+  .home_banner {
+    margin-top: .08rem;
+    margin-bottom: .167rem; 
+    height: 1.75rem;
+    .banner_img {
+      padding: 0 .125rem;
+      img {
+        width: 100%;
+        border-radius: .12rem;
+      }
+    }
+  }
+  .ofn {
+    margin: .1667rem .125rem;
+    img {
+      margin-top: .1667rem;
+      width: 100%;
+    }
+  }
+  .home-box {
+    padding-top: .1667rem;
+    .home_box_under_image {
+      height: 1.04rem;
+      margin: 0 .125rem;
+      img {
+        height: 100%;
+      }
+    }
+    .flex-item {
+      margin-top: -.2rem;
+      // position: relative;
+      // z-index: 100;
+      .home_box_banner {
+        // position: fixed;
+        // left: 0;
+        // bottom: -.2rem;
+        // z-index: 100;
+        img {
+          width: .97rem;
+        }
+      }
+
+    }
+  }
 }
