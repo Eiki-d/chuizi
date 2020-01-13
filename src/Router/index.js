@@ -33,7 +33,7 @@ const router = (
                     localStorage.getItem("token")?<Center/>:<Redirect to="/login"/>
                 }/>  */}
                 <Route path="/center" component={Center}/>
-                <Route path="/detail" component={Detail} exact/>
+                <Route path="/detail/:id" component={Detail} exact/>
                 <Redirect from="/" to="/home" exact/>
                 <Redirect to="/error"/>
             </Switch>

@@ -3,6 +3,10 @@ import "./home.scss"
 import Navbar from '../../Components/Navbar/navbar'
 import Axios from 'axios'
 import  Swiper from '../../Components/Swiper/Swiper'
+import  Swiper_two from '../../Components/Swiper/swiper_two'
+import List from "./List/list"
+import {withRouter} from 'react-router'
+
 
 class Home extends Component {
     state = {
@@ -27,7 +31,7 @@ class Home extends Component {
                 <Swiper key={this.state.bannerlist.length}>
                     {
                         this.state.bannerlist.map((item,index)=>
-                            <div className="swiper-slide" key={index}>
+                            <div className="swiper-slide" key={index} onClick={()=>this.handleClick2(item.url)}>
                                 <img src={item.image} alt=""/>
                             </div>  
                             // console.log(item) 
@@ -51,30 +55,45 @@ class Home extends Component {
                             <img src={item.header.image} alt=""/>
                         </div>
                         <div className="home_box_banner">
-                            <Swiper key={item.skuInfo.length}>
+                            <Swiper_two key={item.skuInfo.length} loop={false}>
                                 {
                                     item.skuInfo.map((item,index)=>
                                         // console.log(data)
                                         <div className="swiper-slide flex-item" key={index}>
-                                            <div>
-                                                <div className="home_box_banner">
+                                            <div className="flex-item_box" onClick={()=>this.handleClick(item.skuId)}>
+                                                <div className="home_box_banner_image">
                                                     <img src={item.images} alt=""/>
                                                 </div>
+                                                <div className="flex-item_goods">
+                                                    <span className="spuTitle">{item.spuTitle}</span>
+                                                    {/* <span className="discountPrice">￥{item.discountPrice}</span> */}
+                                                    <span className="originalPrice"> ￥{item.originalPrice}</span>
+                                                </div>
                                             </div>
-                                            <div>
-                                                {/* <span>{data}</span>
-                                                <span>{data}</span> */}
-                                            </div>
+                                            
                                         </div>
                                     )
                                 }
-                            </Swiper>
+                            </Swiper_two>
                         </div>
                     </div>
                 )
             }
-
+            {/* 猜你喜欢列表 */}
+            <List></List>
+            
         </div>
+    }
+    handleClick = (id)=>{
+        console.log(id)
+        this.props.history.push(`/detail/${id}`)
+    }
+    handleClick2 = (myid)=>{
+        console.log(myid)
+        console.log(this.props)
+        // this.props.history.push(`{myid}`)
+        // this.props.location.push({myid})
+        // window.location.href({myid})
     }
     componentDidMount(){
         Axios({
@@ -89,6 +108,7 @@ class Home extends Component {
             })
         })
     }
+   
 }
 
-export default Home
+export default withRouter(Home)

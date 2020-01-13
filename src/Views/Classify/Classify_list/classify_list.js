@@ -1,9 +1,11 @@
 import React, { Component } from 'react'
 // import {withRouter} from 'react-router'
 import Axios from 'axios'
-import "./digital.scss"
+import "./classify_list.scss"
+import {withRouter} from 'react-router'
+// import Classify from '../classify'
 
-class digital extends Component {
+class Classify_list extends Component {
     state = {
         datalist: []
         // goodsList:[]
@@ -18,12 +20,13 @@ class digital extends Component {
                 goodsList: this.refresh
             })
         })
-        console.log(this.state.goodsList)
+        // console.log(this.state.goodsList)
     }
     render() {
-        console.log(this.state.datalist)
-        // let {item} = this.props
+        // console.log(this.state.datalist)
+        let {item} = this.props
         // console.log(item)
+        console.log(this.props)
         return (
             <div className="classify_digital">
                 {
@@ -39,8 +42,12 @@ class digital extends Component {
                                         </div>
                                         {
                                             item.third.map((item,index)=>
-                                            <div key={index}>
-                                                <img src={item.image} style={{width:".85rem"}}/>
+                                            <div key={index} className="list-flex-wrap">
+                                                <div className="flex-item">
+                                                    <img src={item.image} style={{width:".85rem"}} alt=""/>
+                                                    <span>{item.classifyName}</span>
+                                                </div>
+                                                
                                             </div>
                                             )
                                         }
@@ -49,8 +56,6 @@ class digital extends Component {
                                 )
                             }
                         </div>
-                        
-                         
                     )
                 }
             </div>
@@ -83,4 +88,4 @@ class digital extends Component {
     
 }
 
-export default digital
+export default withRouter(Classify_list)

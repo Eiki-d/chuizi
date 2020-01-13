@@ -1,0 +1,70 @@
+.home_list {
+  box-sizing: border-box;
+  padding-top: .145rem;
+  margin: .145rem .125rem 0 .125rem;
+  .home_list_box {
+    box-sizing: border-box;
+    .cnxh {
+      padding: 0 0 .15rem .21rem;
+      h2{
+        font-size: .16rem;
+        font-weight: bold;
+      }
+      
+    }
+    .guesslike-wrap {
+      box-sizing: border-box;
+      width: 100%;
+      // display: flex;
+      // flex-direction: column;
+      // justify-content: space-around;
+      .guess-like-item {
+        // flex: 1;
+        font-size: .13rem;
+        color: rgba(0,0,0,.7);
+        box-sizing: border-box;
+        width: 49%;
+        float: left;
+        .guess-like-item_img {
+          box-sizing: border-box;
+          border-radius: .08rem;
+          border: 1px solid rgba(0,0,0,.05);
+          width: 1.7rem;
+          img {
+            width: 100%;
+          }
+        }
+        .item-title {
+          box-sizing: border-box;
+          width: 90%;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          margin: .06rem 0 .2rem 0;
+          padding: 0 .06rem;
+        }
+        .item-bottom-info {
+          padding: 0 .06rem;
+          .item-price {
+            .discountPrice {
+              color: #d44d44;
+              .discountPrice_symbol {
+                font-size: .06rem;
+              }
+            }
+            .originalPrice {
+              font-size: .06rem;
+              line-height: .06rem;
+              text-decoration: line-through;
+              color: #ccc;
+              margin-left: .05rem;
+            }
+          }
+        }
+      }
+      .guess-like-item:nth-of-type(2n) {
+        margin: 0 0 .1667rem .0625rem;
+      }
+    }
+  }
+}
