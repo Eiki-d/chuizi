@@ -19,7 +19,7 @@ class List extends Component{
         <div className="guesslike-wrap">
           {
             this.state.datalist.map((item,index)=>
-              <div className="guess-like-item" key={index} onClick={()=>this.handleClick(item.skuId)}>
+              <div className="guess-like-item" key={index} onClick={()=>this.handleClick(item.skuId, item.spuId)}>
                 <div className="guess-like-item_img">
                   <img src={item.images} alt=""/>
                 </div>
@@ -45,9 +45,14 @@ class List extends Component{
       /> */}
     </div>
   }
-  handleClick(id){
-    console.log(id)
+  handleClick(id, spuId){
+    console.log(id, spuId)
+    localStorage.setItem('spuId', spuId)
+    localStorage.setItem('id', id)
     this.props.history.push(`/detail/${id}`)
+    // this.props.match.params.push({
+    //   id:id
+    // })
   }
   componentDidMount(){
     Axios({

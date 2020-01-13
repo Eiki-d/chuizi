@@ -14,6 +14,9 @@
             height: 100%;
             padding: .32rem .2rem .2rem;
             background: white;
+            display: flex;
+            flex-direction: column;
+            // justify-content: center;
             .first-list{
                 a{
                     padding-bottom: .26rem;
@@ -21,8 +24,10 @@
                     font-weight: 700;
                     // color: rgb(128, 125, 125);
                     color: rgba(0,0,0,.6);
-                    display: flex;
-                    justify-content: center;
+                    div {
+                        margin-bottom: .177rem;
+
+                    }
                 }
                 .active{
                     color: #d44d44;

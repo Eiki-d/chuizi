@@ -1,0 +1,27 @@
+.TabMenu {
+  background:#d4d4d4;
+  .TabMenuList {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: .09375rem .0625rem;
+    border-radius: 0 .04rem .04rem 0;
+    .TabMenuListLi {
+      // float: left;
+    //   position: relative;
+    // // left: 0;
+    // // right: 0;
+    // top: -.45rem;
+    flex-basis: 25%;
+    padding: .08rem 0;
+    position: relative;
+    color: #606060;
+    // bottom: -.45rem;
+    text-align: center;
+    border: 1px solid rgba(0,0,0,.12);
+    }
+    .active {
+      background: #bfbfbf;
+    }
+  }
+}

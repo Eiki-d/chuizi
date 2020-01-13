@@ -9,7 +9,7 @@ module.exports = function(app) {
   );
 
   app.use(
-    '/mobile',
+    '/product',
     proxy({
       target: 'https://shopapi.smartisan.com',
       changeOrigin: true,

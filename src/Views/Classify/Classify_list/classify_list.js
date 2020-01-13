@@ -6,59 +6,73 @@ import {withRouter} from 'react-router'
 // import Classify from '../classify'
 
 class Classify_list extends Component {
-    state = {
-        datalist: []
-        // goodsList:[]
-    }
-    componentDidMount(){
-        Axios({
-            url: '/mobile/classify'
-        }).then(res=>{
-            // console.log(res.data)
-            this.setState({
-                datalist: res.data.data,
-                goodsList: this.refresh
-            })
-        })
-        // console.log(this.state.goodsList)
-    }
+    // state = {
+    //     datalist: []
+    //     // goodsList:[]
+    // }
+    // componentDidMount(){
+    //     console.log(this.props.second)
+    //     Axios({
+    //         url: '/mobile/classify'
+    //     }).then(res=>{
+    //         // console.log(res.data)
+    //         this.setState({
+    //             datalist: res.data.data
+    //             // goodsList: this.refresh
+    //         })
+    //     })
+    //     // console.log(this.state.goodsList)
+    // }
     render() {
         // console.log(this.state.datalist)
         let {item} = this.props
-        // console.log(item)
-        console.log(this.props)
+        console.log(item)
         return (
             <div className="classify_digital">
-                {
-                    this.state.datalist.map((item,index)=>
-                        // console.log(item)
-                        <div key={index}>
-                            {
-                                item.second.map((item,index)=>
-                                    // console.log(item)
-                                    <div key={index}>
-                                        <div>
-                                            <h3>{item.classifyName}</h3>
-                                        </div>
-                                        {
-                                            item.third.map((item,index)=>
-                                            <div key={index} className="list-flex-wrap">
-                                                <div className="flex-item">
-                                                    <img src={item.image} style={{width:".85rem"}} alt=""/>
-                                                    <span>{item.classifyName}</span>
-                                                </div>
+                    <div className="classify_digital_list">
+                        {
+                            item.map(item=>
+                                <li>
+                                    <div>
+                                        {/* <img src={item.}/> */}
+                                        {/* <span>{item.classifyName}</span> */}
+                                    </div>
+                                </li>
+                            )
+                            
+                        }
+                    </div>
+             </div>
+            // <div className="classify_digital" ref="mychild">
+            //     {
+            //         this.state.datalist.map((item,index)=>
+            //             // console.log(item)
+            //             <div key={index}>
+            //                 {
+            //                     item.second.map((item,index)=>
+            //                         // console.log(item)
+            //                         <div key={index}>
+            //                             <div>
+            //                                 <h3>{item.classifyName}</h3>
+            //                             </div>
+            //                             {
+            //                                 item.third.map((item,index)=>
+            //                                 <div key={index} className="list-flex-wrap">
+            //                                     <div className="flex-item">
+            //                                         <img src={item.image} style={{width:".85rem"}} alt=""/>
+            //                                         <span>{item.classifyName}</span>
+            //                                     </div>
                                                 
-                                            </div>
-                                            )
-                                        }
-                                        
-                                    </div>   
-                                )
-                            }
-                        </div>
-                    )
-                }
-            </div>
+            //                                 </div>
+            //                                 )
+            //                             }
+            //                         </div>   
+            //                     )
+            //                 }
+            //             </div>
+            //         )
+            //     }
+            // </div>
         )
     }
     // refresh = ()=>{

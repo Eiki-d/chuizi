@@ -12,10 +12,12 @@ class Home extends Component {
     state = {
         bannerlist: [],
         datalist: [],
-        goodsOnelist: []
+        goodsOnelist: [],
+        urllist: []
         // ofn: []
     }
     render(){
+        console.log(this.props)
         return <div id="Home">
             {/* 头部 */}
             <header>
@@ -42,7 +44,7 @@ class Home extends Component {
             </div>
 
             {/* 以旧换新   图片 */}
-            <div className="ofn">
+            <div className="ofn" onClick={()=>this.handleClick1(this.state.urllist)}>
                 <img src={this.state.typelist} alt=""/>
             </div>
 
@@ -88,9 +90,17 @@ class Home extends Component {
         console.log(id)
         this.props.history.push(`/detail/${id}`)
     }
+    handleClick1 = (url)=>{
+        console.log(url)
+        // this.props.history.push(url)
+        // this.props.history.push({
+        //     pathname: {url}
+        // });
+    }
     handleClick2 = (myid)=>{
         console.log(myid)
         console.log(this.props)
+        
         // this.props.history.push(`{myid}`)
         // this.props.location.push({myid})
         // window.location.href({myid})
@@ -104,6 +114,7 @@ class Home extends Component {
                 datalist: res.data.data,
                 bannerlist: res.data.data[0].list,
                 typelist: res.data.data[1].image,
+                urllist: res.data.data[1].url,
                 goodsOnelist: res.data.data.splice(2,9)
             })
         })
