@@ -8,13 +8,13 @@ module.exports = function(app) {
     })
   );
 
-  // app.use(
-  //   '/ajax2',
-  //   proxy({
-  //     target: 'http://m2.maoyan.com',
-  //     changeOrigin: true,
-  //   })
-  // );
+  app.use(
+    '/product',
+    proxy({
+      target: 'https://shopapi.smartisan.com',
+      changeOrigin: true,
+    })
+  );
 
   // app.use(
   //   '/ajax3',

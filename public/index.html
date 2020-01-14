@@ -37,6 +37,13 @@
       body {
         background: #fff;
       }
+      #back-to-top {
+        margin-bottom: .5rem;
+        background: #fff;
+        /* box-shadow: 0 0.02rem 0.1rem rgba(0,0,0,.06); */
+        border: 1px solid rgba(0,0,0,.06);
+        /* border-radius: .3rem; */
+      }
   </style>
   <script>
     document.documentElement.style.fontSize=window.innerWidth/375*100+"px";
@@ -55,5 +62,12 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
+    <script src="https://unpkg.com/vanilla-back-to-top@7.2.1/dist/vanilla-back-to-top.min.js"></script>
+    <script>addBackToTop({
+      diameter: 35,
+      backgroundColor: 'rgb(255, 82, 82)',
+      textColor: 'rgba(0,0,0,.4)',
+      // marginBottom: '50px'
+    })</script>
   </body>
 </html>
