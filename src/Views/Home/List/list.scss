@@ -4,14 +4,6 @@
   margin: .145rem .125rem 0 .125rem;
   .home_list_box {
     box-sizing: border-box;
-    .cnxh {
-      padding: 0 0 .15rem .21rem;
-      h2{
-        font-size: .16rem;
-        font-weight: bold;
-      }
-      
-    }
     .guesslike-wrap {
       box-sizing: border-box;
       width: 100%;
@@ -46,19 +38,19 @@
         .item-bottom-info {
           padding: 0 .06rem;
           .item-price {
-            .discountPrice {
+            .originalPrice {
               color: #d44d44;
               .discountPrice_symbol {
                 font-size: .06rem;
               }
             }
-            .originalPrice {
-              font-size: .06rem;
-              line-height: .06rem;
-              text-decoration: line-through;
-              color: #ccc;
-              margin-left: .05rem;
-            }
+            // .originalPrice {
+            //   font-size: .06rem;
+            //   line-height: .06rem;
+            //   text-decoration: line-through;
+            //   color: #ccc;
+            //   margin-left: .05rem;
+            // }
           }
         }
       }

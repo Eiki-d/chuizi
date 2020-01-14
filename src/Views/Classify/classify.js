@@ -3,8 +3,10 @@ import {
     NavLink
 } from 'react-router-dom'
 import Navbar from '../../Components/Navbar/navbar'
-import Classify_list from './Classify_list/classify_list'
+// import Classify_list from './Classify_list/classify_list'
 import Axios from 'axios'
+import store from '../../Redux/store'
+import {getList, getListThunk} from '../../Redux/Actions/list'
 import './classify.scss'
 
 class Classify extends Component {
@@ -15,15 +17,23 @@ class Classify extends Component {
     }
 
     componentDidMount(){
-        Axios.get("/mobile/classify").then(res=>{
-            // console.log(res.data.data)
+        
+        if(store.getState().listReducer.length===0){
+            store.dispatch(getListThunk(()=>{
+                // console.log("数据完事了",store.getState().listReducer)
+                this.setState({
+                    datalist:store.getState().listReducer
+                })
+            }))
+        }else{
+            // console.log("缓存")
             this.setState({
-                datalist: res.data.data
+                datalist:store.getState().listReducer
             })
-        })
+        }
     }
     render(){
-        console.log(this.state.second)
+        // console.log(this.state.second)
         return <div className="Classify">
             <div className="Navbar">
                 <Navbar/>
@@ -35,9 +45,7 @@ class Classify extends Component {
                     <NavLink to={`/classify/classify_list/${this.state.id}`} activeClassName="active">
                         {
                             this.state.datalist.map((item,index)=>  
-                                // <li key={index}>{item.classifyName}</li>
-                                
-                                <div key={index} onClick={()=>this.handleClick(item.classifyId,item.second)}>
+                                <div key={index} onClick={()=>this.handleClick(item.classifyId,item.second)} item={item.second}>
                                     <span>{item.classifyName}</span>
                                 </div>
                             )
@@ -57,26 +65,11 @@ class Classify extends Component {
             </div>
         </div>
     }
-    // render() {
-    //     return (
-    //         <div>
-    //             <ul>111111111
-    //                 <Classify_list/>
-    //             {/* {
-    //                 this.state.datalist.map(item=>
-    //                     // <FilmItem key={item} item={item} {...this.props}></FilmItem>
-    //                     <FilmItem key={item.id} item={item}></FilmItem>    
-    //                 )
-    //             } */}
-    //             </ul>
-    //         </div>
-    //     )
-    // }
     handleClick = (id, second)=>{
         console.log(id)
-        console.log(second)
+        // console.log(second)
         localStorage.setItem('myid',id)
-        var digitail_id = localStorage.getItem('myid',id)
+        var digitail_id = localStorage.getItem('myid')
         // var second= this.state.datalist[i].second
         for(var i=0; i<this.state.datalist.length; i++){
             if(this.state.datalist[i]==digitail_id){

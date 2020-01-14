@@ -6,6 +6,9 @@ import  Swiper from '../../Components/Swiper/Swiper'
 import  Swiper_two from '../../Components/Swiper/swiper_two'
 import List from "./List/list"
 import {withRouter} from 'react-router'
+import {connect} from 'react-redux'
+import {ActivityIndicator,PullToRefresh} from 'antd-mobile'
+// import {getList, getListThunk} from '../../../Redux/Actions/list'
 
 
 class Home extends Component {
@@ -13,11 +16,14 @@ class Home extends Component {
         bannerlist: [],
         datalist: [],
         goodsOnelist: [],
-        urllist: []
-        // ofn: []
+        urllist: [],
+        animating:true,
+        current:1,
+        // ids: [] ,
+        skulist: []
     }
     render(){
-        console.log(this.props)
+        // console.log(this.props)
         return <div id="Home">
             {/* 头部 */}
             <header>
@@ -82,44 +88,98 @@ class Home extends Component {
                 )
             }
             {/* 猜你喜欢列表 */}
-            <List></List>
-            
+                <ul onScroll={()=>this.handleScroll()}>
+                    <div className="cnxh">
+                        <h2>猜你喜欢</h2>
+                    </div>
+            <PullToRefresh
+                    damping={60}
+                    style={{
+                    // height: '400px',
+                    overflow: 'auto',
+                    }}
+                    direction={'up'}
+                    refreshing={this.state.refreshing}
+                    onRefresh={this.refresh}
+                >
+                {
+                    this.state.skulist.map((item,index)=>
+                        // <FilmItem key={item} item={item} {...this.props}></FilmItem>
+                        // console.log(item)
+                        // <FilmItem key={item.id} item={item}></FilmItem>
+                        <div key={index}>
+                            <List key={index} item={item}></List>  
+                        </div>  
+                        
+                    )
+                }
+            </PullToRefresh>
+            </ul>
+            {/* <div>
+                <ActivityIndicator
+                toast
+                text="正在加载..."
+                animating={this.state.animating}
+                />
+            </div> */}
         </div>
     }
     handleClick = (id)=>{
-        console.log(id)
+        // console.log(id)
         this.props.history.push(`/detail/${id}`)
     }
     handleClick1 = (url)=>{
-        console.log(url)
-        // this.props.history.push(url)
-        // this.props.history.push({
-        //     pathname: {url}
-        // });
+        // console.log(url)
     }
     handleClick2 = (myid)=>{
-        console.log(myid)
-        console.log(this.props)
-        
-        // this.props.history.push(`{myid}`)
-        // this.props.location.push({myid})
-        // window.location.href({myid})
+        // console.log(myid)
+        // console.log(this.props)
+
+    }
+    handleScroll(){
+        // window.scroll
     }
     componentDidMount(){
         Axios({
             url: '/mobile/home'
         }).then(res=>{
-            // console.log(res.data)
+            // console.log(res.data.data)
             this.setState({
                 datalist: res.data.data,
                 bannerlist: res.data.data[0].list,
                 typelist: res.data.data[1].image,
                 urllist: res.data.data[1].url,
-                goodsOnelist: res.data.data.splice(2,9)
+                goodsOnelist: res.data.data.splice(2,9),
+            })
+        })
+        
+    }
+    refresh = ()=>{
+    
+        // if(this.state.datalist.length===this.state.ids.length){
+        //     return ;
+        // }
+    
+        this.setState({
+            refreshing:true
+        })
+    
+        // var newid =[]
+        // for(var i=0;i<this.state.ids.length;i++){
+        //     newid = this.state.ids.slice(this.state.current*10,(this.state.current+1)*10)
+        // }
+        
+        Axios({
+            url: `/mobile/skulist?page=${this.state.current}`
+          }).then(res=>{
+              // console.log(res.data.data.skuInfo)
+            this.setState({
+                // datalist: res.data.data.skuInfo,
+                skulist:[...this.state.datalist,...res.data.data.skuInfo],
+                current: this.state.current+1
             })
         })
     }
-   
 }
 
 export default withRouter(Home)
