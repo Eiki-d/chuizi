@@ -1,0 +1,129 @@
+.wrap-box{
+    width: 100%;
+    background: #ededed;
+    min-height: 6.1rem;
+    height: 100%;
+    .page-title{
+        height: .46rem;
+        background: #1d1d1d;
+        .title{
+            color: white;
+            line-height: .46rem;
+            font-size: .16rem;
+            position: absolute;
+            left: .6rem;
+            right: .6rem;
+            text-align: center;
+            font-weight: 600;
+        }
+    }
+    .page-for-center{
+        padding: .15rem .12rem 0;
+        .common-box{
+            position: relative;
+            height: .9rem;
+            line-height: .9rem;
+            padding-left: 1rem;
+            border-radius: .1rem .1rem 0 0;
+            font-size: .17rem;
+            color: #333;
+            box-shadow: none;
+            background: white;
+            .avatar{
+                position: absolute;
+                left: .2rem;
+                top: 15%;
+                img{
+                    width: .57rem;
+                    height: .57rem;
+                    border-radius: 50%;
+                }
+            }
+            span{
+                margin-left: 1.5rem;
+                font-size: .12rem;
+                color: rgb(182, 179, 179);
+            }
+        }
+        .wrapper{
+            height: 100%;
+            width: 100%;
+            background: url(//static.smartisanos.cn/mobile/assets/images/bg-layout@2x.5611bddf255be8472b81b7a740665a5d.png) repeat;
+            background-size: 5rem;
+            box-sizing: border-box;
+            // min-height: 85vh;
+        }
+    }
+    .menu-list{
+        position: relative;
+        height: .65rem;
+        background: white;
+        border-radius: 0 0 .1rem .1rem;
+        margin-top: .01rem;
+        display: flex;
+        box-shadow: 0 1px 2px rgba(0,0,0,.1), 0 18px 20px -10px rgba(0,0,0,.03), 0 18px 20px -10px rgba(0,0,0,.03), 0 10px 20px -10px rgba(0,0,0,.03);
+        li{
+            font-size: .12rem;
+            display: flex;
+            flex-direction: column;
+            width: 25%;
+            border-right: 1px solid rgb(247, 247, 247);
+            padding-top: .11rem;
+            text-align: center;
+            .iconfont {
+                margin-bottom: .1rem;
+                font-size: .2rem;
+                color: rgb(168, 164, 164);
+              }
+        }
+        .serve{
+            border-right: none;
+        }
+    }
+    .coupon{
+        height: 1.8rem;
+        margin-top: .15rem;
+        background: white;
+        border-radius: .1rem;
+        box-shadow: 0 1px 2px rgba(0,0,0,.1), 0 18px 20px -10px rgba(0,0,0,.03), 0 18px 20px -10px rgba(0,0,0,.03), 0 10px 20px -10px rgba(0,0,0,.03);
+        li{
+            height: .6rem;
+            line-height: .6rem;
+            padding-left: .12rem;
+            display: flex;
+            justify-content: space-between;
+            p{
+                font-size: .18rem;
+                float: left;
+            }
+            .iconfont{
+                padding-right: .15rem;
+                font-size: .12rem;
+                color: rgb(182, 179, 179);
+            }
+        }
+    }
+    .question{
+        height: 1.8rem;
+        margin-top: .15rem;
+        background: white;
+        border-radius: .1rem;
+        box-shadow: 0 1px 2px rgba(0,0,0,.1), 0 18px 20px -10px rgba(0,0,0,.03), 0 18px 20px -10px rgba(0,0,0,.03), 0 10px 20px -10px rgba(0,0,0,.03);
+        li{
+            height: .6rem;
+            line-height: .6rem;
+            padding-left: .12rem;
+            display: flex;
+            justify-content: space-between;
+            p{
+                font-size: .18rem;
+                float: left;
+            }
+            .iconfont{
+                padding-right: .15rem;
+                font-size: .12rem;
+                color: rgb(182, 179, 179);
+            }
+        }
+    }
+}

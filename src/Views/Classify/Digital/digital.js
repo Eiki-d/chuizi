@@ -44,6 +44,7 @@ class digital extends Component {
                 // this.goodsList()
             })
             // this.state.datalist:res.data.data
+            
             // this.setState({
             // })
         })
