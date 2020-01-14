@@ -14,6 +14,7 @@ import Center from '../Views/Center/center'
 import Detail from '../Views/Detail/detail'
 import Login from '../Views/Login/login'
 import Search from '../Views/Search/search'
+import Error from '../Views/error'
 // import {Provider} from 'react-redux'
 // import Store from '../Redux/store'
 const router = (
@@ -33,6 +34,7 @@ const router = (
                     localStorage.getItem("token")?<Center/>:<Redirect to="/login"/>
                 }/>  */}
                 <Route path="/center" component={Center}/>
+                <Route path="/error" component={Error}/>
                 <Route path="/detail/:id" component={Detail} exact/>
                 <Redirect from="/" to="/home" exact/>
                 <Redirect to="/error"/>

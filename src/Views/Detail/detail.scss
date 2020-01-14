@@ -1,7 +1,9 @@
 .detail {
   background: #f5f5f5;
   .detailNav{
-    position: relative;
+    height: .5rem;
+    width: 100%;
+    position: fixed;
     top: 0 ;
     left: 0;
     z-index: 100;
@@ -11,7 +13,7 @@
     // position: fixed;
     // top: 0;
     // left: 0;
-    position: fixed;
+    position: relative;
     background: black;
     height: .5rem;
     line-height: .5rem;
@@ -59,6 +61,7 @@
 
   .detail_content {
     margin-bottom: .06rem;
+    margin-top: .5rem;
     background: #fff;
     .detailBanner {
       .swiper-slide {
@@ -101,6 +104,41 @@
       h3 {
         font-weight: bold;
       }
+    }
+  }
+  .item-footer {
+    position: fixed;
+    width: 100%;
+    background: white;
+    bottom: 0;
+    left: 0;
+    height: .57rem;
+    box-shadow: 0 -11px 27px rgba(0,0,0,.08);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    .cart-entry {
+        img {
+          width: .28rem;
+          height: .28rem;
+          margin: .07rem .12rem;
+
+        }
+    }
+    .box-border {
+      border: 1px solid #f0f0f0;
+      width: 1.5rem;
+      height: .4rem;
+      line-height: .4rem;
+      text-align: center;
+    }
+    .highlight {
+      color: #fff;
+      background: linear-gradient(#6e98f4,#4b77ee);
+      width: 1.5rem;
+      height: .4rem;
+      line-height: .4rem;
+      text-align: center;
     }
   }
 }

@@ -30,17 +30,14 @@ class Detail extends Component {
         console.log(localStorage.getItem.spuId)
         Axios.get(`/product/spus?ids=${localStorage.getItem('spuId')}`)
         .then(res=>{
-            // console.log(res.data.data)
 
             this.setState({
-                // filminfo:res.data.detailMovie
                 detaillist: res.data.data.list
             })
         })
         Axios.get(`/product/skus?ids=${localStorage.getItem('id')}&with_stock=true&with_spu=true`)
         .then(res=>{
             console.log(res.data.data)
-
             this.setState({
                 // filminfo:res.data.detailMovie
                 detaillist: res.data.data.list,
@@ -109,11 +106,25 @@ class Detail extends Component {
                 }
                 
                 {/* <TabMenu></TabMenu> */}
+                <div className="item-footer">
+                    <li onClick={()=>this.handleClick1()} className="cart-entry">
+                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADYAAAA2CAYAAACMRWrdAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAJrSURBVHgB7ZnLUQJBEIabVxU3MYMxAjEDjEDNQA5QRXFQI1Az0ANFFRwgAzECCAEjkAzcIwce/oO7iuA+eu3ZBZ2vamt3ahtm/nn0dM8SWSwWi+WLDBmm1+uVZrNZeblcqlWFmcykVquNyDDGhLmCriDoGsXSxmsH12A+n983Go0JGcCIsFarVc7n808YHRViOsF1Ua/XxySMuLB2u62y2exwQ5QeIa/xZfo+gg5G7kR65PIkTC6X6+Gm3OIEja6i0aN1G4i/hPhbV3zJ/c0pCSI6Yt1ut4I1NfTKEHXkNxIQV4GgddvTzQ74DVkSBKLO14r9oOnlihh4ZYg8J0FEhYFj7wEiX8KMMUrP3vNisVAkiLSwT7B+HI491twBCWJMWNpYYfvGnxUmvUHfwNOtoopisRglTBrp/Us/wCuynM2/JVbk0el0rnC7o+2oXRoH28YD0px7YsIWpoNcRAmvlCBBoZkfbOeBdERR8ihiIh0rDgqFwqHuYfpIVUTs0ZnsqIQtDFmx8nsHz/ZYrVYdd9qMKISo9uiAQ2LCFoaYrhTw7kzf9TpEY8oU/l+R7PGO7aTiTEXfSuDBruEx37RziXAswLE3LwwNCKuE24hQ+wh1bsEWFmdaCGDeeaD3RPMmU4iuMYMoYrIv0X0ia0xR8uyEVzRBuvuYQcwK0x8aKCW4dbOETafT1IRx62YJQ+iTmjAuLGEpOQ4PxTHem1Mqbk7GEhaUi5mGm5OxhAXlYrsGdyqmJowb8eyN8+DWzRKWUi4WC5YwHL70ySxLvwsnWQ+M/4l3YIpbhRIEHTpuNptRvgVYLBaL5UfeAWeL6tgW6zwZAAAAAElFTkSuQmCC"/>
+                    </li>
+                    <li onClick={()=>this.handleClick1()} className="box-border">
+                        <span>现在购买</span>
+                    </li>
+                    <li onClick={()=>this.handleClick1()} className="highlight">
+                        <span>加入购物车</span>
+                    </li>
+                </div>
             </div>
         )
     }
     handleClick(){
         this.props.history.goBack()
+    }
+    handleClick1(){
+        this.props.history.push('/center')
     }
 }
 

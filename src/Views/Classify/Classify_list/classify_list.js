@@ -13,15 +13,15 @@ class Classify_list extends Component {
             <div className="classify_digital">
                 <div className="classify_digital_list">
                     {
-                        item.map(item=>
+                        // item.map(item=>
                             // console.log(item),
                             <li>
                                 <div>
                                     {/* <img src={item.}/> */}
-                                    <span>{item.classifyName}</span>
+                                    {/* <span>{item.classifyName}</span> */}
                                 </div>
                             </li>
-                        )
+                        // )
                     }
                 </div>
             </div>
