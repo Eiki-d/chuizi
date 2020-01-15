@@ -108,12 +108,10 @@ class Detail extends Component {
                                         //     // console.log(item)
                                         //     // <img src={item} alt=""/>
                                         // ) */}
-                                    
                                 </div>
                             </div>
                         </div>
                     )
-                    
                 }
                 
                 {/* <TabMenu></TabMenu> */}

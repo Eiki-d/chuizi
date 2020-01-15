@@ -6,6 +6,7 @@ import "./tabbar.scss"
 class Tabbar extends Component{
     render(){
         return <div className="tabbar">
+            
             <ul className="tabbar_list">
                 <li>
                     <NavLink to="/home" activeClassName="active">

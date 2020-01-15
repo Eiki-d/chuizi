@@ -88,32 +88,37 @@ class Home extends Component {
                 )
             }
             {/* 猜你喜欢列表 */}
-                <ul onScroll={()=>this.handleScroll()}>
+                <ul className="cnxh_list">
                     <div className="cnxh">
                         <h2>猜你喜欢</h2>
                     </div>
-            <PullToRefresh
-                    damping={60}
-                    style={{
-                    // height: '400px',
-                    overflow: 'auto',
-                    }}
-                    direction={'up'}
-                    refreshing={this.state.refreshing}
-                    onRefresh={this.refresh}
-                >
-                {
-                    this.state.skulist.map((item,index)=>
-                        // <FilmItem key={item} item={item} {...this.props}></FilmItem>
-                        // console.log(item)
-                        // <FilmItem key={item.id} item={item}></FilmItem>
-                        <div key={index}>
-                            <List key={index} item={item}></List>  
-                        </div>  
-                        
-                    )
-                }
-            </PullToRefresh>
+            {/* <div></div> */}
+                <PullToRefresh
+                        damping={60}
+                        style={{
+                        // height: '400px',
+                        overflow: 'auto',
+                        // position: "fixed",
+                        // bottom: "0",
+                        // left: "0"
+                        }}
+                        // indicator={this.state.down ? {} : {}}
+                        direction={'up'}
+                        refreshing={this.state.refreshing}
+                        onRefresh={this.refresh}
+                    >
+                    {
+                        this.state.skulist.map((item,index)=>
+                            // <FilmItem key={item} item={item} {...this.props}></FilmItem>
+                            // console.log(item)
+                            // <FilmItem key={item.id} item={item}></FilmItem>
+                            <div key={index}>
+                                <List item={item}></List>  
+                            </div>  
+                            
+                        )
+                    }
+                </PullToRefresh>
             </ul>
             {/* <div>
                 <ActivityIndicator
@@ -155,16 +160,29 @@ class Home extends Component {
                 goodsOnelist: res.data.data.splice(2,9),
             })
         })
+        Axios({
+            url: `/mobile/skulist?page=1`
+        }).then(res=>{
+            //   console.log(res.data.data.skuInfo.map(item=>item.spuId))
+            this.setState({
+                // datalist: res.data.data.skuInfo,
+                skulist:res.data.data.skuInfo
+                // current: this.state.current+1,
+                // refreshing:false,
+                // ids: res.data.data.skuInfo.map(item=>item.spuId)
+            })
+        })
         
     }
     refresh = ()=>{
     
-        // if(this.state.datalist.length===this.state.ids.length){
+        // if(this.state.skulist.length===1){
         //     return ;
         // }
     
         this.setState({
-            refreshing:true
+            refreshing:true,
+            // isLoading: false
         })
     
         // var newid =[]
@@ -174,12 +192,14 @@ class Home extends Component {
         
         Axios({
             url: `/mobile/skulist?page=${this.state.current}`
-          }).then(res=>{
-              // console.log(res.data.data.skuInfo)
+        }).then(res=>{
+            //   console.log(res.data.data.skuInfo.map(item=>item.spuId))
             this.setState({
                 // datalist: res.data.data.skuInfo,
-                skulist:[...this.state.datalist,...res.data.data.skuInfo],
-                current: this.state.current+1
+                skulist:[...this.state.skulist,...res.data.data.skuInfo],
+                current: this.state.current+1,
+                refreshing:false,
+                // ids: res.data.data.skuInfo.map(item=>item.spuId)
             })
         })
     }

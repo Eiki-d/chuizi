@@ -1,5 +1,6 @@
 #Classify {
-
+    height: 100%;
+    margin-bottom: .56rem;
     .Classify{
         .category-container{
             border-top: 1px solid rgb(238, 234, 234);
@@ -54,6 +55,7 @@
         top: .49rem;
         left: .9rem;
         z-index: -1;
+        margin-bottom: .56rem;
         // height: 100%;
         // width: auto;
         // width: 100%;
@@ -89,7 +91,7 @@
                     margin-bottom: .17rem;
                     img {
                         width: .85rem;
-                        height: .85rem
+                        height: .85rem;
                     }
                 }
             }

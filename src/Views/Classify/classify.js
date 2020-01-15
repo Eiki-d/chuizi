@@ -7,7 +7,7 @@ import {
 
 } from 'react-router-dom'
 import Navbar from '../../Components/Navbar/navbar'
-import Classify_list from './Classify_list/classify_list'
+// import Classify_list from './Classify_list/classify_list'
 import Axios from 'axios'
 import store from '../../Redux/store'
 import {getList, getListThunk} from '../../Redux/Actions/list'
@@ -20,22 +20,7 @@ class Classify extends Component {
         id: '',
         banner: []
     }
-
-    componentDidMount(){
-        if(store.getState().listReducer.length===0){
-            store.dispatch(getListThunk(()=>{
-                // console.log("数据完事了",store.getState().listReducer)
-                this.setState({
-                    datalist:store.getState().listReducer
-                })
-            }))
-        }else{
-            // console.log("缓存")
-            this.setState({
-                datalist:store.getState().listReducer
-            })
-        }
-    }
+    
     render(){
         // console.log(this.state.second)
         return <div id="Classify">
@@ -49,28 +34,16 @@ class Classify extends Component {
                     <ul className="first-list">
                         {
                             this.state.datalist.map((item,index)=>  
-                                <NavLink to={`/classify`} activeClassName="active" key={index} item={item} onClick={()=>this.handleClick(item.classifyId,item.second,item.banner)}>
+                                <NavLink to={`/classify`} key={index} item={item} onClick={()=>this.handleClick(item.classifyId,item.second,item.banner)}>
                                         {/* <li key={index} onClick={()=>this.handleClick(item.classifyId,item.second)} item={item}> */}
                                             <span>{item.classifyName}</span>
                                         {/* </li> */}
                                 </NavLink>
                             )
                         }
-                        
                     </ul>
                 </section>
-                <div className="right-wrap">
-                    {/* {
-                        console.log(this.state.second),
-                        this.state.second.map((item,index)=>  
-                            <Classify_list key={index} item={item}></Classify_list>
-                        )
-                    } */}
-                </div>
             </div>
-                {/* <Route path={`/classify/classify_list/${localStorage.getItem('myid')}`} component={Classify_list}/> */}
-                {/* <Route path="/detail/:id" component={Detail} exact/> */}
-                {/* <Redirect from="/classify" to="/classify/classify_list/150" exact/> */}
           </div>
           <div className="classify_list">
               {
@@ -87,8 +60,8 @@ class Classify extends Component {
                   <div className="second-and-third-list" key={index}>
                     <h2>{item.classifyName}</h2>
                       {
-                        item.third.map((item,index)=>
-                          <div className="list-flex-wrap" key={index}>
+                       item.third.map((item,index)=> 
+                          <div className="list-flex-wrap" key={index}  onClick={()=>this.handleClick1(item.spuList[0])}>
                               {/* console.log(item.image), */}
                                 <div className="flex-item" >
                                   <img scr={item.image} alt=""/> 
@@ -108,7 +81,7 @@ class Classify extends Component {
     }
     handleClick = (id, second,banner)=>{
         console.log(id)
-        // console.log(second)
+        console.log(second)
         localStorage.setItem('myid',id)
         // localStorage.setItem('second',second)
         var digitail_id = localStorage.getItem('myid')
@@ -124,6 +97,33 @@ class Classify extends Component {
             banner: banner
         })
         // console.log(this.state.second)
+    }
+    handleClick1(id){
+      console.log(id)
+      localStorage.setItem("id",id)
+      this.props.history.push(`/detail/${id}`)
+    }
+    componentDidMount(){
+      Axios.get("/mobile/classify").then(res=>{
+        console.log(res.data.data)
+        this.setState({
+          datalist: res.data.data,
+          second:res.data.data[0].second
+      })
+      })
+        if(store.getState().listReducer.length===0){
+            store.dispatch(getListThunk(()=>{
+                // console.log("数据完事了",store.getState().listReducer)
+                this.setState({
+                    datalist:store.getState().listReducer
+                })
+            }))
+        }else{
+            // console.log("缓存")
+            this.setState({
+                datalist:store.getState().listReducer
+            })
+        }
     }
 }
 
