@@ -28,11 +28,12 @@ class Detail extends Component {
         // 动态路由接受参数
         // console.log(this.props.match.params.myid)
         console.log(localStorage.getItem.spuId)
-        Axios.get(`/product/spus?ids=${localStorage.getItem('spuId')}`)
+        Axios.get(`/product/spus?ids=${localStorage.getItem('id')}`)
         .then(res=>{
 
             this.setState({
-                detaillist: res.data.data.list
+                detaillist: res.data.data.list,
+                detailBannerList: res.data.data.list
             })
         })
         Axios.get(`/product/skus?ids=${localStorage.getItem('id')}&with_stock=true&with_spu=true`)
@@ -44,6 +45,16 @@ class Detail extends Component {
                 detailBannerList: res.data.data.list
             })
         })
+
+        // Axios.get(`/product/skus?ids=${localStorage.getItem('sku')}&with_stock=true&with_spu=true`)
+        // .then(res=>{
+        //     console.log(res.data.data)
+        //     this.setState({
+        //         // filminfo:res.data.detailMovie
+        //         detaillist: res.data.data.list,
+        //         detailBannerList: res.data.data.list
+        //     })
+        // })
         
         // query接受参数
         // console.log(this.props.location.query.id)

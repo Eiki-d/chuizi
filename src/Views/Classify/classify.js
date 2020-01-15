@@ -112,89 +112,29 @@ import './classify.scss'
 
 import { Menu, ActivityIndicator, NavBar } from 'antd-mobile';
 
-const data = [
-  {
-    value: '1',
-    label: 'Food',
-    children: [
-      {
-        label: 'All Foods',
-        value: '1',
-        // disabled: false,
-      },
-      {
-        label: 'Chinese Food',
-        value: '2',
-      }, {
-        label: 'Hot Pot',
-        value: '3',
-      }, {
-        label: 'Buffet',
-        value: '4',
-      }, {
-        label: 'Fast Food',
-        value: '5',
-      }, {
-        label: 'Snack',
-        value: '6',
-      }, {
-        label: 'Bread',
-        value: '7',
-      }, {
-        label: 'Fruit',
-        value: '8',
-      }, {
-        label: 'Noodle',
-        value: '9',
-      }, {
-        label: 'Leisure Food',
-        value: '10',
-      }],
-  }, {
-    value: '2',
-    label: 'Supermarket',
-    children: [
-      {
-        label: 'All Supermarkets',
-        value: '1',
-      }, {
-        label: 'Supermarket',
-        value: '2',
-        // disabled: true,
-      }, {
-        label: 'C-Store',
-        value: '3',
-      }, {
-        label: 'Personal Care',
-        value: '4',
-      }],
-  }
-];
+// const data = this.state.datalist
 
 class Error extends React.Component {
-  constructor(...args) {
-    super(...args);
-    this.state = {
-      initData: '',
+    state = {
+      initData: [],
       show: true,
       datalist: []
-    };
-  }
-  onChange = (value) => {
-    let label = '';
-    data.forEach((dataItem) => {
-      if (dataItem.value === value[0]) {
-        label = dataItem.label;
-        if (dataItem.children && value[1]) {
-          dataItem.children.forEach((cItem) => {
-            if (cItem.value === value[1]) {
-              label += ` ${cItem.label}`;
+    }
+  onChange = (classifyId) => {
+    let classifyName = '';
+    this.state.datalist.map((item) => {
+      if (item.classifyId === classifyId[0]) {
+        classifyName = item.classifyName;
+        if (item.second && classifyId[1]) {
+          item.second.map((item) => {
+            if (item.classifyId === classifyId[1]) {
+              classifyName += `${item.classifyName}`;
             }
           });
         }
       }
     });
-    // console.log(label);
+    console.log(classifyName);
   }
 
 //   onMaskClick = () => {
@@ -202,20 +142,22 @@ class Error extends React.Component {
 //       show: false,
 //     });
 //   }
-  componentWillMount(){
-      this.setState({
-          initData: data,
-          //点击显示列表
-      });
-
-  }
-  componentDidMount(){
+//   componentWillMount(){
+//       this.setState({
+//           initData: this.state.datalist,
+//           //点击显示列表
+//       });
+//     }
+    componentDidMount(){
+        // console.log(this.state.initData)
     if(store.getState().listReducer.length===0){
         store.dispatch(getListThunk(()=>{
             // console.log("数据完事了",store.getState().listReducer)
             this.setState({
                 datalist:store.getState().listReducer,
                 show: this.state.show,
+                // initData: this.state.datalist.map(item=>item.classifyName),
+                initData: this.state.datalist
             })
         }))
     }else{
@@ -226,13 +168,14 @@ class Error extends React.Component {
     }
  }
   render() {
-      console.log(this.state.datalist)
+    console.log(this.state.datalist.map(item=>item.classifyName))
+    console.log(this.state.datalist)
     const { initData, show } = this.state;
     const menuEl = (
       <Menu
         className="foo-menu"
         data={initData}
-        // value={['1', '3']}
+        value={['1', '3']}
         onChange={this.onChange}
         // height={document.documentElement.clientHeight * 0.6}
       />

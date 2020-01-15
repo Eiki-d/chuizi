@@ -58,7 +58,7 @@ class Home extends Component {
             {
                 this.state.goodsOnelist.map((item,index)=>
                     // console.log(item.header.image)
-                    <div className="home-box" key={index}>
+                    <div className="home-box" key={index} onClick={()=>this.handleClick3(item.sku)}>
                         <div className="home_box_under_image" key={index}>
                             <img src={item.header.image} alt=""/>
                         </div>
@@ -125,7 +125,8 @@ class Home extends Component {
         </div>
     }
     handleClick = (id)=>{
-        // console.log(id)
+        console.log(id)
+        localStorage.setItem('id', id)
         this.props.history.push(`/detail/${id}`)
     }
     handleClick1 = (url)=>{
@@ -134,7 +135,9 @@ class Home extends Component {
     handleClick2 = (myid)=>{
         // console.log(myid)
         // console.log(this.props)
-
+    }
+    handleClick3 = (sku)=>{
+        localStorage.setItem('sku', sku)
     }
     handleScroll(){
         // window.scroll
