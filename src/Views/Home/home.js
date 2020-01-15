@@ -19,6 +19,8 @@ class Home extends Component {
         urllist: [],
         animating:true,
         current:1,
+        refreshing: false,
+        // isLoading: false,
         // ids: [] ,
         skulist: []
     }
@@ -96,11 +98,9 @@ class Home extends Component {
                 <PullToRefresh
                         damping={60}
                         style={{
-                        // height: '400px',
-                        overflow: 'auto',
-                        // position: "fixed",
-                        // bottom: "0",
-                        // left: "0"
+                        // overflow: 'auto',
+                        overflow: "scroll",
+                        touchAction: "none"
                         }}
                         // indicator={this.state.down ? {} : {}}
                         direction={'up'}
@@ -136,13 +136,18 @@ class Home extends Component {
     }
     handleClick1 = (url)=>{
         // console.log(url)
+        window.location.href=url
     }
     handleClick2 = (myid)=>{
-        // console.log(myid)
+        console.log(myid)
         // console.log(this.props)
+        // this.props.history.push("myid")
+        // window.lacation.href({myid})
+        window.location.href=myid
     }
     handleClick3 = (sku)=>{
         localStorage.setItem('sku', sku)
+        window.location.href=sku
     }
     handleScroll(){
         // window.scroll
@@ -182,7 +187,7 @@ class Home extends Component {
     
         this.setState({
             refreshing:true,
-            // isLoading: false
+            isLoading: false
         })
     
         // var newid =[]

@@ -34,7 +34,7 @@ class Classify extends Component {
                     <ul className="first-list">
                         {
                             this.state.datalist.map((item,index)=>  
-                                <NavLink to={`/classify`} key={index} item={item} onClick={()=>this.handleClick(item.classifyId,item.second,item.banner)}>
+                                <NavLink to={`/classify`} key={index} item={item} onClick={()=>this.handleClick(item.classifyId,item.second,item.banner)} activeClassName="active">
                                         {/* <li key={index} onClick={()=>this.handleClick(item.classifyId,item.second)} item={item}> */}
                                             <span>{item.classifyName}</span>
                                         {/* </li> */}
@@ -59,17 +59,21 @@ class Classify extends Component {
                   // console.log(item)
                   <div className="second-and-third-list" key={index}>
                     <h2>{item.classifyName}</h2>
+                    <div className="list-flex-wrap">
                       {
-                       item.third.map((item,index)=> 
-                          <div className="list-flex-wrap" key={index}  onClick={()=>this.handleClick1(item.spuList[0])}>
-                              {/* console.log(item.image), */}
-                                <div className="flex-item" >
-                                  <img scr={item.image} alt=""/> 
+                          item.third.map((item,index)=> 
+                                <div className="flex-item"  key={index}  onClick={()=>this.handleClick1(item.spuList[0])}>
+                                  <div className="flex-item-image">
+                                    {/* <img src={item.image.concat('',"?x-oss-process=image/resize,w_188/format,webp")} alt=""/>  */}
+                                    <img src={item.image} alt=""/>
+                                  </div>
+                                  <div className="flex-item-title">
+                                    {item.classifyName}
+                                  </div>
                                 </div>
-
-                          </div>
-                        )
+                          )
                       }
+                    </div> 
                   </div>  
                 )
 
@@ -128,7 +132,9 @@ class Classify extends Component {
 }
 
 export default Classify
-
+// https://resource.smartisan.com/resource/f195e666e089d4e3775ce67d8e9523ce.png?x-oss-process=image/resize,w_188/format,webp
+// https://resource.smartisan.com/resource/f195e666e089d4e3775ce67d8e9523ce.png?x-oss-process=image/resize,w_188/format,webp
+// "https://resource.smartisan.com/resource/f195e666e089d4e3775ce67d8e9523ce.png"
 
 // import { Menu, ActivityIndicator, NavBar } from 'antd-mobile';
 
