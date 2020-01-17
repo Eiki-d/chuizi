@@ -7,7 +7,7 @@ import {
 
 } from 'react-router-dom'
 import Navbar from '../../Components/Navbar/navbar'
-// import Classify_list from './Classify_list/classify_list'
+
 import Axios from 'axios'
 import store from '../../Redux/store'
 import {getList, getListThunk} from '../../Redux/Actions/list'
@@ -35,9 +35,7 @@ class Classify extends Component {
                         {
                             this.state.datalist.map((item,index)=>  
                                 <NavLink to={`/classify`} key={index} item={item} onClick={()=>this.handleClick(item.classifyId,item.second,item.banner)} activeClassName="active">
-                                        {/* <li key={index} onClick={()=>this.handleClick(item.classifyId,item.second)} item={item}> */}
-                                            <span>{item.classifyName}</span>
-                                        {/* </li> */}
+                                  <span>{item.classifyName}</span>
                                 </NavLink>
                             )
                         }
@@ -62,7 +60,7 @@ class Classify extends Component {
                     <div className="list-flex-wrap">
                       {
                           item.third.map((item,index)=> 
-                                <div className="flex-item"  key={index}  onClick={()=>this.handleClick1(item.spuList[0])}>
+                                <div className="flex-item"  key={index}  onClick={()=>this.handleClick1(item.classifyId)}>
                                   <div className="flex-item-image">
                                     {/* <img src={item.image.concat('',"?x-oss-process=image/resize,w_188/format,webp")} alt=""/>  */}
                                     <img src={item.image} alt=""/>
@@ -78,8 +76,8 @@ class Classify extends Component {
                 )
 
               }
-              {/* <img src="https://resource.smartisan.com/resource/f195e666e089d4e3775ce67d8e9523ce.png" alt=""/> */}
           </div>
+          
         </div>
         
     }
@@ -104,8 +102,8 @@ class Classify extends Component {
     }
     handleClick1(id){
       console.log(id)
-      localStorage.setItem("id",id)
-      this.props.history.push(`/detail/${id}`)
+      localStorage.setItem("classifyId",id)
+      this.props.history.push(`/classifyList/${id}`)
     }
     componentDidMount(){
       Axios.get("/mobile/classify").then(res=>{
@@ -132,143 +130,4 @@ class Classify extends Component {
 }
 
 export default Classify
-// https://resource.smartisan.com/resource/f195e666e089d4e3775ce67d8e9523ce.png?x-oss-process=image/resize,w_188/format,webp
-// https://resource.smartisan.com/resource/f195e666e089d4e3775ce67d8e9523ce.png?x-oss-process=image/resize,w_188/format,webp
-// "https://resource.smartisan.com/resource/f195e666e089d4e3775ce67d8e9523ce.png"
-
-// import { Menu, ActivityIndicator, NavBar } from 'antd-mobile';
-
-// const data = [
-//   {
-//     value: '1',
-//     label: 'Food',
-//     children: [
-//       {
-//         label: 'All Foods',
-//         value: '1',
-//         // disabled: false,
-//       },
-//       {
-//         label: 'Chinese Food',
-//         value: '2',
-//       }, {
-//         label: 'Hot Pot',
-//         value: '3',
-//       }, {
-//         label: 'Buffet',
-//         value: '4',
-//       }, {
-//         label: 'Fast Food',
-//         value: '5',
-//       }, {
-//         label: 'Snack',
-//         value: '6',
-//       }, {
-//         label: 'Bread',
-//         value: '7',
-//       }, {
-//         label: 'Fruit',
-//         value: '8',
-//       }, {
-//         label: 'Noodle',
-//         value: '9',
-//       }, {
-//         label: 'Leisure Food',
-//         value: '10',
-//       }],
-//   }, {
-//     value: '2',
-//     label: 'Supermarket',
-//     children: [
-//       {
-//         label: 'All Supermarkets',
-//         value: '1',
-//       }, {
-//         label: 'Supermarket',
-//         value: '2',
-//         // disabled: true,
-//       }, {
-//         label: 'C-Store',
-//         value: '3',
-//       }, {
-//         label: 'Personal Care',
-//         value: '4',
-//       }],
-//   }
-// ];
-// class Error extends React.Component {
-
-//     state = {
-//       initData: data,
-//       show: true,
-//       datalist: []
-//     }
-//   onChange = (value) => {
-//     let label = '';
-//     this.state.datalist.map((item) => {
-//       if (item.value === value[0]) {
-//         label = item.label;
-//         if (item.second && value[1]) {
-//           item.second.map((item) => {
-//             if (item.value === value[1]) {
-//               label += `${item.label}`;
-//             }
-//           });
-//         }
-//       }
-//     });
-//     console.log(label);
-//   }
-
-//     componentDidMount(){
-//         // console.log(this.state.initData)
-//     if(store.getState().listReducer.length===0){
-//         store.dispatch(getListThunk(()=>{
-//             // console.log("数据完事了",store.getState().listReducer)
-//             this.setState({
-//                 datalist:store.getState().listReducer,
-//                 show: this.state.show,
-//                 initData: this.state.datalist.map(item=>item.classifyName),
-//             })
-//         }))
-//     }else{
-//         // console.log("缓存")
-//         this.setState({
-//             datalist:store.getState().listReducer
-//         })
-//     }
-//  }
-//   render() {
-//     console.log(this.state.datalist.map(item=>item.classifyName))
-//     console.log(this.state.datalist)
-//     const { initData, show } = this.state;
-//     const menuEl = (
-//       <Menu
-//         className="foo-menu"
-//         data={initData}
-//         value={['1', '3']}
-//         onChange={this.onChange}
-//         // height={document.documentElement.clientHeight * 0.6}
-//       />
-//     );
-//     const loadingEl = (
-//       <div style={{ width: '100%', height: document.documentElement.clientHeight * 0.6, display: 'flex', justifyContent: 'center' }}>
-//         <ActivityIndicator size="large" />
-//       </div>
-//     );
-//     return (
-//       <div className='menu-active'>
-//         <div>
-//         </div>
-//         {show ? initData ? menuEl : loadingEl : null}
-//         {show ? <div className="menu-mask" onClick={this.onMaskClick} /> : null}
-//       </div>
-//     );
-//   }
-// }
-
-// // ReactDOM.render(<MenuExample />, mountNode);
-
-// export default Error
-
 

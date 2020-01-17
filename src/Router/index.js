@@ -15,6 +15,8 @@ import Detail from '../Views/Detail/detail'
 import Login from '../Views/Login/login'
 import Search from '../Views/Search/search'
 import Error from '../Views/error'
+import ClassifyList from '../Views/Classify/ClassifyList/classifyList'
+
 // import {Provider} from 'react-redux'
 // import Store from '../Redux/store'
 const router = (
@@ -27,6 +29,7 @@ const router = (
                 } />
                 <Route path="/home" component={Home}/>
                 <Route path="/classify" component={Classify}/>
+                <Route path="/classifyList/:id" component={ClassifyList}/>
                 <Route path="/cart" component={Cart}/>
                 <Route path="/login" component={Login}/>
                 <Route path="/search" component={Search} exact/>

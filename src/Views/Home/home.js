@@ -18,11 +18,13 @@ class Home extends Component {
         goodsOnelist: [],
         urllist: [],
         animating:true,
-        current:1,
+        current:2,
         refreshing: false,
         // isLoading: false,
         // ids: [] ,
-        skulist: []
+        height: document.documentElement.clientHeight,
+        skulist: [],
+        down: true
     }
     render(){
         // console.log(this.props)
@@ -96,17 +98,19 @@ class Home extends Component {
                     </div>
             {/* <div></div> */}
                 <PullToRefresh
-                        damping={60}
-                        style={{
+                    // style={{ marginBottom: 15 }}
+                    damping={60}
+                    style={{
                         // overflow: 'auto',
                         overflow: "scroll",
-                        touchAction: "none"
-                        }}
-                        // indicator={this.state.down ? {} : {}}
-                        direction={'up'}
-                        refreshing={this.state.refreshing}
-                        onRefresh={this.refresh}
-                    >
+                        touchAction: "none",
+                        height: this.state.height,
+                    }}
+                    indicator={this.state.up ? {} : { deactivate: ' ' }}
+                    direction={'up'}
+                    refreshing={this.state.refreshing}
+                    onRefresh={this.refresh}
+                >
                     {
                         this.state.skulist.map((item,index)=>
                             // <FilmItem key={item} item={item} {...this.props}></FilmItem>
@@ -115,7 +119,6 @@ class Home extends Component {
                             <div key={index}>
                                 <List item={item}></List>  
                             </div>  
-                            
                         )
                     }
                 </PullToRefresh>
@@ -147,7 +150,7 @@ class Home extends Component {
     }
     handleClick3 = (sku)=>{
         localStorage.setItem('sku', sku)
-        window.location.href=sku
+        // window.location.href=sku
     }
     handleScroll(){
         // window.scroll
@@ -186,7 +189,7 @@ class Home extends Component {
         // }
     
         this.setState({
-            refreshing:true,
+            refreshing: false,
             isLoading: false
         })
     

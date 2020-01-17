@@ -16,11 +16,11 @@ module.exports = function(app) {
     })
   );
 
-  // app.use(
-  //   '/ajax3',
-  //   proxy({
-  //     target: 'http://m3.maoyan.com',
-  //     changeOrigin: true,
-  //   })
-  // );
+  app.use(
+    '/v1',
+    proxy({
+      target: 'https://shopapi.smartisan.com',
+      changeOrigin: true,
+    })
+  );
 };
